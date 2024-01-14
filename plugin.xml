@@ -247,7 +247,9 @@
       <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
       <!-- GPS -->
       <uses-feature android:name="android.hardware.location"/>
-      <uses-feature android:name="android.hardware.location.gps"/>
+
+      <!-- already import from other plugins -->
+      <uses-feature android:name="android.hardware.location.gps" android:required="true"/>
     </config-file>
 
     <resource-file src="src/android/res/layout/dummy_infowindow.xml" target="res/layout/dummy_infowindow.xml"/>
