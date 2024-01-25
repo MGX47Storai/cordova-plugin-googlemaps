@@ -50,40 +50,42 @@ function pluginInit() {
    * disable the changing of viewport zoom level by double clicking.
    * This code has to run before the device ready event.
    *****************************************************************************/
-  var viewportTag = null;
-  var metaTags = document.getElementsByTagName('meta');
-  for (var i = 0; i < metaTags.length; i++) {
-    if (metaTags[i].getAttribute('name') === 'viewport') {
-      viewportTag = metaTags[i];
-      break;
-    }
-  }
-  if (!viewportTag) {
-    viewportTag = document.createElement('meta');
-    viewportTag.setAttribute('name', 'viewport');
-  }
+  // On App already declare this, not need override
+  
+  // var viewportTag = null;
+  // var metaTags = document.getElementsByTagName('meta');
+  // for (var i = 0; i < metaTags.length; i++) {
+  //   if (metaTags[i].getAttribute('name') === 'viewport') {
+  //     viewportTag = metaTags[i];
+  //     break;
+  //   }
+  // }
+  // if (!viewportTag) {
+  //   viewportTag = document.createElement('meta');
+  //   viewportTag.setAttribute('name', 'viewport');
+  // }
 
-  var viewportTagContent = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no';
+  // var viewportTagContent = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no';
 
-  //
-  // Detect support for CSS env() variable
-  //
-  var envTestDiv = '<div id="envTest" style="margin-top:-99px;margin-top:constant(safe-area-inset-top);margin-top:env(safe-area-inset-top);position:absolute;z-index:-1;"></div>';
+  // //
+  // // Detect support for CSS env() variable
+  // //
+  // var envTestDiv = '<div id="envTest" style="margin-top:-99px;margin-top:constant(safe-area-inset-top);margin-top:env(safe-area-inset-top);position:absolute;z-index:-1;"></div>';
 
-  document.body.insertAdjacentHTML('afterbegin', envTestDiv);
+  // document.body.insertAdjacentHTML('afterbegin', envTestDiv);
 
-  var testElement = document.getElementById('envTest');
-  var testResult = common.getStyle(testElement, 'margin-top');
-  document.body.removeChild(testElement);
+  // var testElement = document.getElementById('envTest');
+  // var testResult = common.getStyle(testElement, 'margin-top');
+  // document.body.removeChild(testElement);
 
-  // if browser supports env(), returns a pixel value as string, even if 0px
-  if (testResult != '-99px') {
-    viewportTagContent += ', viewport-fit=cover';
-  }
+  // // if browser supports env(), returns a pixel value as string, even if 0px
+  // if (testResult != '-99px') {
+  //   viewportTagContent += ', viewport-fit=cover';
+  // }
 
-  // Update viewport tag attribute
-  viewportTag.setAttribute('content', viewportTagContent);
-
+  // // Update viewport tag attribute
+  // viewportTag.setAttribute('content', viewportTagContent);
+  
   /*****************************************************************************
    * Prevent background, background-color, background-image properties
    *****************************************************************************/
